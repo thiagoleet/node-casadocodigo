@@ -1,16 +1,14 @@
 var mysql = require('mysql');
 
-// factory method
-function createDbConnection () {
+function createDBConnection() {
     return mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'root',
+        password: '',
         database: 'casadocodigo_nodejs'
     });
 }
 
-// wrapper
-module.exports = function() {
-    return createDbConnection;
+module.exports = function () {
+    return createDBConnection;
 }

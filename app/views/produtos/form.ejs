@@ -1,30 +1,33 @@
-<!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-
 <body>
-    <form action="/produtos" method="POST">
+    <div class='erros'>
+        <%if(errosValidacao){%>
+            <ul>
+                <%for(var i=0;i<errosValidacao.length;i++){%>
+                    <li>
+                        <%=errosValidacao[i].param%> -
+                            <%=errosValidacao[i].msg%>
+                    </li>
+                    <%}%>
+            </ul>
+            <%}%>
+    </div>
+    <form action="/produtos" method="post">
         <div>
             <label for="titulo">Titulo</label>
-            <input type="text" id="titulo" name="titulo" placeholder="Informe o título do livro" required>
+            <input type="text" id="titulo" name="titulo" value="<%=produto.titulo%>" placeholder="coloque o titulo" />
         </div>
         <div>
-            <label for="preco">Preco</label>
-            <input type="number" id="preco" name="preco" placeholder="Informe o preço do livro" required>
+            <label for="preco">Preço</label>
+            <input type="text" id="preco" name="preco" value="<%=produto.preco%>" placeholder="150.25" />
         </div>
         <div>
             <label for="descricao">Descrição</label>
-            <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Informe a descrição do livro"></textarea>
+            <textarea cols="20" rows="10" id="descricao" name="descricao" placeholder="fale sobre o livro"><%=produto.descricao%></textarea>
         </div>
-        <div>
-            <input type="submit" value="Gravar">
-        </div>
+
+        <input type="submit" value="gravar" />
     </form>
 </body>
 

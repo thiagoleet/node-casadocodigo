@@ -1,0 +1,23 @@
+{
+  "name": "learning-node",
+  "version": "1.0.0",
+  "description": "aprendendo nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiagofmleite/learning-node.git"
+  },
+  "keywords": [
+    "nodejs",
+    "learning"
+  ],
+  "author": "Thiago Leite",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thiagofmleite/learning-node/issues"
+  },
+  "homepage": "https://github.com/thiagofmleite/learning-node#readme"
+}

@@ -8,9 +8,10 @@ module.exports = function (app) {
         connection.end();
     });
 
-    app.post('/promocoes', function (req, res) {
+    app.post("/promocoes", function (req, res) {
         var promocao = req.body;
-        console.log(promocao);
-        res.redirect('promocoes/form');
+
+        app.get('io').emit("novaPromocao", promocao);
+        res.redirect("/promocoes/form");
     });
 }

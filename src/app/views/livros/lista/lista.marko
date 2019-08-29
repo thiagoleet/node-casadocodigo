@@ -4,21 +4,28 @@
     </head>
     <body>
         <h1> Livros </h1>
-        <table>
+        <table id="livros">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Price</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
             <for|livro| of=data.livros>
-                <tr>
+                <tr id="livro_${livro.id}">
                     <td>${livro.id}</td>
                     <td>${livro.titulo}</td>
+                    <td>${livro.preco}</td>
+                    <td><a href="#">Edit</a></td>
+                    <td><a href="#" data-ref="${livro.id}" data-type="remove">Remove</a></td>
                 </tr>
             </for>
             </tbody>
         </table>
+        <script src="/static/js/remove-livro.js"></script> 
     </body>
 </html>

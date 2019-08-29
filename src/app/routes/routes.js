@@ -32,6 +32,10 @@ module.exports = app => {
   })
 
   app.post('/livros', function(req, res, next) {
-    console.info(req.body)
+    const livroDao = new LivroDao(db)
+    livroDao
+      .adiciona(req.body)
+      .then(res.redirect('/livros'))
+      .catch(e => console.error(e))
   })
 }

@@ -1,3 +1,4 @@
+// MarkoJS
 require('marko/node-require').install()
 require('marko/express')
 
@@ -6,6 +7,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
+// Middlewares
 app.use('/estatico', express.static('src/app/public'))
 
 app.use(
@@ -23,7 +25,16 @@ app.use(
   })
 )
 
+// Routes
 const routes = require('../app/routes')
 routes(app)
+
+app.use(function(req, res, next) {
+  return res.status(404).marko(require('../app/views/base/erros/404.marko'))
+})
+
+app.use(function(error, req, res, next) {
+  return res.status(500).marko(require('../app/views/base/erros/500.marko'))
+})
 
 module.exports = app

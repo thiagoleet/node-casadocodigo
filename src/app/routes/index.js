@@ -19,7 +19,9 @@ module.exports = app => {
   })
 
   app.get('/livros/form', function(req, resp) {
-    resp.marko(require('../views/livros/form/form.marko'), { livro: {} })
+    resp.marko(require('../views/livros/form/form.marko'), {
+      livro: { title: null }
+    })
   })
 
   app.get('/livros/form/:id', function(req, resp) {

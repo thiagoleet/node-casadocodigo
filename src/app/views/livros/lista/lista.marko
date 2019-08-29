@@ -12,10 +12,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr for(livro in data.livros)>
+            <for|livro| of=data.livros>
+                <tr>
                     <td>${livro.id}</td>
                     <td>${livro.title}</td>
                 </tr>
+            </for>
             </tbody>
         </table>
     </body>

@@ -1,3 +1,6 @@
+const db = require('../../config/database')
+const LivroDao = require('../infra/livro-dao')
+
 module.exports = app => {
   app.get('/', function(req, res, next) {
     res.send(`
@@ -13,17 +16,14 @@ module.exports = app => {
   })
 
   app.get('/livros', function(req, res, next) {
-    res.marko(require('../views/livros/lista/lista.marko'), {
-      livros: [
-        {
-          id: 1,
-          title: 'Node Fundamentals'
-        },
-        {
-          id: 2,
-          title: 'Node Advanced'
-        }
-      ]
-    })
+    const livroDao = new LivroDao(db)
+    livroDao
+      .lista()
+      .then(livros => {
+        res.marko(require('../views/livros/lista/lista.marko'), {
+          livros
+        })
+      })
+      .catch(e => console.error(e))
   })
 }

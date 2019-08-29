@@ -20,7 +20,8 @@
   "homepage": "https://github.com/thiagofmleite/learning-node#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "marko": "^4.18.12"
+    "marko": "^4.18.12",
+    "sqlite3": "4.0.2"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

@@ -31,7 +31,7 @@ function render(input, out, __component, component, state) {
     out.w("<tr><td>" +
       marko_escapeXml(livro.id) +
       "</td><td>" +
-      marko_escapeXml(livro.title) +
+      marko_escapeXml(livro.titulo) +
       "</td></tr>");
   });
 

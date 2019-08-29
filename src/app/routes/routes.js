@@ -28,13 +28,36 @@ module.exports = app => {
   })
 
   app.get('/livros/form', function(req, res, next) {
-    res.marko(require('../views/livros/form/form.marko'))
+    res.marko(require('../views/livros/form/form.marko'), {
+      livro: {}
+    })
+  })
+
+  app.get('/livros/form/:id', function(req, res, next) {
+    const id = req.params.id
+    const livroDao = new LivroDao(db)
+    livroDao
+      .buscaPorId(id)
+      .then(livro => {
+        res.marko(require('../views/livros/form/form.marko'), { livro })
+      })
+      .catch(e => console.error(e))
   })
 
   app.post('/livros', function(req, res, next) {
+    const livro = req.body
     const livroDao = new LivroDao(db)
     livroDao
-      .adiciona(req.body)
+      .adiciona(livro)
+      .then(res.redirect('/livros'))
+      .catch(e => console.error(e))
+  })
+
+  app.put('/livros', function(req, res, next) {
+    const livro = req.body
+    const livroDao = new LivroDao(db)
+    livroDao
+      .atualiza(livro)
       .then(res.redirect('/livros'))
       .catch(e => console.error(e))
   })

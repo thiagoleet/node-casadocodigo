@@ -16,12 +16,12 @@
             </thead>
             <tbody>
             <for|livro| of=data.livros>
-                <tr id="livro_${livro.id}">
+                <tr id=`livro_${livro.id}`>
                     <td>${livro.id}</td>
                     <td>${livro.titulo}</td>
                     <td>${livro.preco}</td>
-                    <td><a href="/livros/form/${livro.id}">Edit</a></td>
-                    <td><a href="#" data-ref="${livro.id}" data-type="remove">Remove</a></td>
+                    <td><a href=`/livros/form/${livro.id}`>Edit</a></td>
+                    <td><a href="#" data-ref=`${livro.id}` data-type="remove">Remove</a></td>
                 </tr>
             </for>
             </tbody>

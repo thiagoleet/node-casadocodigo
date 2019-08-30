@@ -7,6 +7,8 @@ const app = express()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
+const templates = require('../app/views/templates')
+
 // Middlewares
 app.use('/estatico', express.static('src/app/public'))
 
@@ -31,12 +33,12 @@ routes(app)
 
 // 404 Not Found
 app.use(function(req, res, next) {
-  return res.status(404).marko(require('../app/views/base/erros/404.marko'))
+  return res.status(404).marko(templates.base.erro404)
 })
 
 // 500 Error
 app.use(function(error, req, res, next) {
-  return res.status(500).marko(require('../app/views/base/erros/500.marko'))
+  return res.status(500).marko(templates.base.erro500)
 })
 
 module.exports = app

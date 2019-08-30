@@ -2,6 +2,7 @@ const uuid = require('uuid')
 const sessao = require('express-session')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const db = require('./database')
 const UsuarioDao = require('../app/infra/usuario-dao')
 
 module.exports = app => {
@@ -12,7 +13,7 @@ module.exports = app => {
         passwordField: 'senha'
       },
       (email, senha, done) => {
-        const usuarioDao = new UsuarioDao()
+        const usuarioDao = new UsuarioDao(db)
         usuarioDao
           .buscaPorEmail(email)
           .then(usuario => {
@@ -51,4 +52,10 @@ module.exports = app => {
 
   app.use(passport.initialize())
   app.use(passport.session())
+
+  // Dependency Injection
+  app.use(function(req, res, next) {
+    req.passport = passport
+    next()
+  })
 }

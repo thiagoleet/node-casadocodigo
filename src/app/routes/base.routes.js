@@ -5,7 +5,12 @@ const BaseController = require('../controllers/base.controller')
 const controller = new BaseController()
 
 module.exports = app => {
-  const routesBase = BaseController.routes()
+  const routes = BaseController.routes()
 
-  app.get(routesBase.home, controller.home())
+  app.get(routes.home, controller.home())
+
+  app
+    .route(routes.login)
+    .get(controller.login())
+    .post(controller.efetuaLogin())
 }

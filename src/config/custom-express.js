@@ -27,6 +27,10 @@ app.use(
   })
 )
 
+// Authentication
+const sessaoAutenticacao = require('./sessao-autenticacao')
+sessaoAutenticacao(app)
+
 // Routes
 const routes = require('../app/routes')
 routes(app)
